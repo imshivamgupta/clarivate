@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react';
-import { ListItem, ContextValue } from '@/interfaces';
+import { ListItem, ContextValue } from './interfaces';
 
 export const AppContext = createContext<ContextValue>({
   data: [],
@@ -19,7 +19,7 @@ export const AppContextProvider = ({ children }: any) => {
     try {
       const response = await fetch(url);
       const newData = await response.json();
-      //   setData((prevData) => [...prevData, ...newData]);
+      // setData((prevData) => [...prevData, ...newData]);
       return newData;
     } catch (error) {
       console.error('Error fetching data:', error);

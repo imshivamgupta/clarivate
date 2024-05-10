@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import Button from '@/content/components/Button';
+import { useEffect, useState } from 'react';
+import Button from '../../content/components/Button';
 import { Link } from 'react-router-dom';
-import { useMyContext } from '@/Context';
-import { ListItem } from '@/interfaces';
-import Loader from '@/content/components/Loader';
+import { useMyContext } from '../../Context';
+import { ListItem } from '../../interfaces';
+import Loader from '../../content/components/Loader';
 
 const Listing = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -22,7 +22,6 @@ const Listing = () => {
       window.innerHeight + document.documentElement.scrollTop ===
       document.documentElement.offsetHeight
     ) {
-      // User has scrolled to the bottom
       loadMoreData();
     }
   };
@@ -38,11 +37,19 @@ const Listing = () => {
   const loadMoreData = async () => {
     setIsLoading(true);
     const nextPage = page + 1;
-    const newData = await fetchData(nextPage);
-    setData((prevData: any) => [...prevData, ...newData]);
-    setPage(nextPage);
-    setIsLoading(false);
+    try {
+      const newData = await fetchData(nextPage);
+      // @ts-ignore
+      setData((prevData: ListItem[]) => [...prevData, ...newData]);
+      setPage(nextPage);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      // Handle error here if needed
+    } finally {
+      setIsLoading(false);
+    }
   };
+
   const isFavorite = (id: number) =>
     favorites.some((item: any) => item.id === id);
 

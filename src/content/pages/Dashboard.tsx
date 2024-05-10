@@ -1,8 +1,7 @@
-import React from 'react';
-import Button from '@/content/components/Button';
-import { useMyContext } from '@/Context';
+import Button from '../../content/components/Button';
+import { useMyContext } from '../../Context';
 import { Link } from 'react-router-dom';
-import { ListItem } from '@/interfaces';
+import { ListItem } from '../../interfaces';
 
 const Dashboard = () => {
   const { favorites } = useMyContext();
