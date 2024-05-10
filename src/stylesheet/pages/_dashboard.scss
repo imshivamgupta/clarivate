@@ -1,0 +1,41 @@
+section.dashboard {
+  font-family: 'Space Grotesk', sans-serif;
+  h1 {
+    sup {
+      font-weight: 400;
+      font-size: 0.8rem;
+      position: relative;
+      top: -1rem;
+    }
+  }
+  main {
+    border: 1px solid lightgray;
+    padding: 2rem 2rem;
+    border-radius: 5px;
+    -webkit-box-shadow: 3px 1px 10px 0px #dddddd5d;
+    -moz-box-shadow: 3px 1px 10px 0px #dddddd5d;
+    box-shadow: 3px 1px 10px 0px #dddddd5d;
+
+    .header {
+      display: flex;
+      // flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      button {
+        margin-left: 1rem;
+      }
+    }
+
+    .listed {
+      margin-top: 1rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      //   margin: 0 auto;
+      .list-item {
+        @include card;
+      }
+    }
+  }
+}
